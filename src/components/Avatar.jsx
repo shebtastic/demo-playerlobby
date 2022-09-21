@@ -1,27 +1,31 @@
 import {useState} from "react";
 
-function Avatar() {
+function Avatar({isLead, onBecomeLead}) {
   const possibleColors = ["black", "red", "green", "blue", "yellow", "hotpink"]
 
-  const [isLead, setLead] = useState(false)
+  // const [isLead, setLead] = useState(false)
   const [color, setColor] = useState(possibleColors[0])
 
   function toggleColor() {
-    setColor(possibleColors[(possibleColors.indexOf(color) + 1) % possibleColors.length])
-  }
-
-  function toggleLead() {
-    setLead(!isLead)
+    setColor((color) => possibleColors[(possibleColors.indexOf(color) + 1) % possibleColors.length])
   }
 
   return (
-    <>
+    <div style={{
+      width: "5em",
+      display: "flex",
+      flexDirection: "column",
+    }}>
       <button onClick={toggleColor}>
-        {isLead ? <PartyLeadIcon color={color} /> : <PartyMemberIcon color={color} />}
+        {
+          isLead 
+            ? <PartyLeadIcon color={color} /> 
+            : <PartyMemberIcon color={color} />
+        }
       </button>
-      <button onClick={toggleLead}>Make Partylead</button>
-    </>
-)
+      <button onClick={onBecomeLead}>Make Partylead</button>
+    </div>
+  )
 }
 
 function PartyLeadIcon({color = "currentColor"}) {

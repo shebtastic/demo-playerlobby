@@ -1,12 +1,10 @@
 import './App.css';
-import Avatar from "./components/Avatar";
-import AddPlayerButton from "./components/AddPlayerButton";
+import PlayerList from "./components/PlayerList";
 
 function App() {
   return (
     <div className="App">
-      <Avatar />
-      <AddPlayerButton />
+      <PlayerList />
     </div>
   );
 }
